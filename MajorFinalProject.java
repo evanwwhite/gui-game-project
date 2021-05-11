@@ -8,15 +8,16 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class MajorFinalProject extends JFrame /*implements ActionListener*/{
+public class MajorFinalProject extends JFrame implements ActionListener{
 
-	private JPanel mainPanel, sidePanel1, sidePanel2, sidePanel3;
+	private JPanel mainPanel, sidePanel, topPanel, rightPanel;
+	private JRadioButton africa, europe, india, america;
 	//private ImageIcon[] triviaPics = {  };// remember to add at end
 	
 //-----------------------------------------------------------
 	public static void main(String[] args) {
 		
-		JFrame frame = new GuiProjectEW();
+		JFrame frame = new MajorFinalProject();
 		frame.setPreferredSize(new Dimension(800, 650));
 		frame.pack();
 		frame.setVisible(true);
@@ -43,29 +44,52 @@ public class MajorFinalProject extends JFrame /*implements ActionListener*/{
 		
 //==//
 
-		sidePanel1 = new JPanel();
-		sidePanel1.setLayout(new GridLayout(1,3));
-		sidePanel1.setPreferredSize(new Dimension(100,100));
-		sidePanel1.setBorder(BorderFactory.createMatteBorder(20,20,20,20, Color.WHITE));
+		sidePanel = new JPanel();
+		sidePanel.setLayout(new GridLayout(4,1));
+		sidePanel.setPreferredSize(new Dimension(300,100));
+		sidePanel.setBorder(BorderFactory.createMatteBorder(5,0,0,5, Color.WHITE));
 		
 //==//		
 		
-		sidePanel2 = new JPanel();
-		sidePanel2.setLayout(new GridLayout(1,2));
-		sidePanel2.setPreferredSize(new Dimension(100,100));
-		sidePanel2.setBorder(BorderFactory.createMatteBorder(20,20,20,20, Color.WHITE));
+		topPanel = new JPanel();
+	    topPanel.setLayout(new GridLayout(1,2));
+		topPanel.setPreferredSize(new Dimension(200,75));
+		topPanel.setBorder(BorderFactory.createMatteBorder(0,0,5,0, Color.WHITE));
 		
 //==//		
 		
-		sidePanel3 = new JPanel();
-		sidePanel3.setLayout(new GridLayout(1,1));
-		sidePanel3.setPreferredSize(new Dimension(100,100));
-		sidePanel3.setBorder(BorderFactory.createMatteBorder(20,20,20,20, Color.WHITE));
+		rightPanel = new JPanel();
+	    rightPanel.setLayout(new GridLayout(1,2));
+		rightPanel.setPreferredSize(new Dimension(300,100));
+		rightPanel.setBorder(BorderFactory.createMatteBorder(5,5,0,0, Color.WHITE));
 		
-//==//		
-		mainPanel.add(sidePanel1, BorderLayout.NORTH);
-		mainPanel.add(sidePanel2, BorderLayout.WEST);
-		mainPanel.add(sidePanel3, BorderLayout.SOUTH);
+//==//
+		ButtonGroup placeGroup = new ButtonGroup();
+		
+		africa = new JRadioButton("Africa?", false);
+		europe = new JRadioButton("Europe?", false);
+		india = new JRadioButton("India?", false);
+		america = new JRadioButton("America?", false);
+		
+		placeGroup.add(africa);
+		placeGroup.add(europe);
+		placeGroup.add(india);
+		placeGroup.add(america);
+		
+		sidePanel.add(africa);
+		sidePanel.add(europe);
+		sidePanel.add(india);
+		sidePanel.add(america);
+		
+		africa.addActionListener(this);
+		europe.addActionListener(this);
+		india.addActionListener(this);
+		america.addActionListener(this);
+		
+		
+		mainPanel.add(topPanel, BorderLayout.NORTH);
+		mainPanel.add(sidePanel, BorderLayout.WEST);
+		mainPanel.add(rightPanel, BorderLayout.CENTER);
 		setContentPane(mainPanel);
 	
 		
