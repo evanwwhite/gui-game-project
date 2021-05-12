@@ -12,6 +12,8 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 
 	private JPanel mainPanel, sidePanel, topPanel, rightPanel;
 	private JRadioButton africa, europe, india, america;
+	private JButton nextButton, checkButton, exitButton, topButton;
+	private JTextField sideText, topText, checkText;
 	//private ImageIcon[] triviaPics = {  };// remember to add at end
 	
 //-----------------------------------------------------------
@@ -45,14 +47,14 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 //==//
 
 		sidePanel = new JPanel();
-		sidePanel.setLayout(new GridLayout(4,1));
+		sidePanel.setLayout(new GridLayout(8,1));
 		sidePanel.setPreferredSize(new Dimension(300,100));
 		sidePanel.setBorder(BorderFactory.createMatteBorder(5,0,0,5, Color.WHITE));
 		
 //==//		
 		
 		topPanel = new JPanel();
-	    topPanel.setLayout(new GridLayout(1,2));
+	    topPanel.setLayout(new GridLayout(1,3));
 		topPanel.setPreferredSize(new Dimension(200,75));
 		topPanel.setBorder(BorderFactory.createMatteBorder(0,0,5,0, Color.WHITE));
 		
@@ -76,8 +78,11 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 		placeGroup.add(india);
 		placeGroup.add(america);
 		
-		sidePanel.add(africa);
+		sideText = new JTextField("        Where Am I ?");
+		sideText.setFont(new Font("Adobe Gothic Std B",0,15 ));
+		sidePanel.add(sideText);
 		sidePanel.add(europe);
+		sidePanel.add(africa);
 		sidePanel.add(india);
 		sidePanel.add(america);
 		
@@ -86,7 +91,31 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 		india.addActionListener(this);
 		america.addActionListener(this);
 		
+		checkButton = new JButton("Are You Right?");
+		checkButton.addActionListener(this);
+		sidePanel.add(checkButton);
 		
+		nextButton = new JButton("Next Place");
+		nextButton.addActionListener(this);
+		sidePanel.add(nextButton);
+		
+		exitButton = new JButton("EXIT");
+		exitButton.addActionListener(this);
+		sidePanel.add(exitButton);
+//==//
+		
+		topText = new JTextField(" Hello this is a Geography guessing game. This is where you will see if you are correct:");
+		topText.setFont(new Font("Adobe Gothic Std B",0,14 ));
+		topPanel.add(topText);
+		
+		checkText = new JTextField("");
+		topPanel.add(topText);
+		
+		topButton = new JButton("Hi");
+		topButton.setPreferredSize(new Dimension(10,10));
+		topPanel.add(topButton);
+		
+//==//		
 		mainPanel.add(topPanel, BorderLayout.NORTH);
 		mainPanel.add(sidePanel, BorderLayout.WEST);
 		mainPanel.add(rightPanel, BorderLayout.CENTER);
@@ -94,4 +123,16 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 	
 		
 	}
+	  public void actionPerformed(ActionEvent e)
+	  
+	  {        	
+	       if(e.getSource() == exitButton ) {
+	            System.exit(0);
+	      }
+	      /*else if(e.getSource() == nextButton){
+	          picButton.setIcon(triviaPics[counter]);
+	          counter++;
+	          counter = counter%triviaPics.length;
+	      }*/
+	  }
 }
