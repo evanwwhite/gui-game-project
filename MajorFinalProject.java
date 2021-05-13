@@ -12,9 +12,15 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 
 	private JPanel mainPanel, sidePanel, topPanel, rightPanel;
 	private JRadioButton africa, europe, india, america;
-	private JButton nextButton, checkButton, exitButton, topButton;
+	private JButton nextButton, checkButton, exitButton, topButton, picButton;
 	private JTextField sideText, topText, checkText;
-	//private ImageIcon[] triviaPics = {  };// remember to add at end
+	private ImageIcon pic1 = new ImageIcon("Sahara-desert.jpg");
+	private ImageIcon pic2 = new ImageIcon("tower.jpg");
+	private ImageIcon pic3 = new ImageIcon("india-tajmahal.jpg");
+	private ImageIcon pic4 = new ImageIcon("america.jpg");
+	private int counter = 0;
+	
+	private ImageIcon[] Pics = {pic1, pic2, pic3, pic4 }; // remember to add at end
 	
 //-----------------------------------------------------------
 	public static void main(String[] args) {
@@ -54,8 +60,8 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 //==//		
 		
 		topPanel = new JPanel();
-	    topPanel.setLayout(new GridLayout(1,3));
-		topPanel.setPreferredSize(new Dimension(200,75));
+	    topPanel.setLayout(new GridLayout(1,2));
+		topPanel.setPreferredSize(new Dimension(700,100));
 		topPanel.setBorder(BorderFactory.createMatteBorder(0,0,5,0, Color.WHITE));
 		
 //==//		
@@ -66,6 +72,9 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 		rightPanel.setBorder(BorderFactory.createMatteBorder(5,5,0,0, Color.WHITE));
 		
 //==//
+		 picButton = new JButton(Pics[0]);
+		 rightPanel.add(picButton);
+		 
 		ButtonGroup placeGroup = new ButtonGroup();
 		
 		africa = new JRadioButton("Africa?", false);
@@ -102,18 +111,17 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 		exitButton = new JButton("EXIT");
 		exitButton.addActionListener(this);
 		sidePanel.add(exitButton);
-//==//
 		
+//==//
+		 
 		topText = new JTextField(" Hello this is a Geography guessing game. This is where you will see if you are correct:");
 		topText.setFont(new Font("Adobe Gothic Std B",0,14 ));
+		topText.setSize(500,100);
 		topPanel.add(topText);
 		
-		checkText = new JTextField("");
-		topPanel.add(topText);
-		
-		topButton = new JButton("Hi");
-		topButton.setPreferredSize(new Dimension(10,10));
-		topPanel.add(topButton);
+		checkText = new JTextField("dlajd;flajs");
+		checkText.setSize(200,100);
+		topPanel.add(checkText);
 		
 //==//		
 		mainPanel.add(topPanel, BorderLayout.NORTH);
@@ -129,10 +137,11 @@ public class MajorFinalProject extends JFrame implements ActionListener{
 	       if(e.getSource() == exitButton ) {
 	            System.exit(0);
 	      }
-	      /*else if(e.getSource() == nextButton){
-	          picButton.setIcon(triviaPics[counter]);
+	      else if(e.getSource() == nextButton){
+	          picButton.setIcon(Pics[counter]);
 	          counter++;
-	          counter = counter%triviaPics.length;
-	      }*/
+	          counter = counter%Pics.length;
+	      }
 	  }
 }
+
